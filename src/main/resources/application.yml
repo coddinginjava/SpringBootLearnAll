@@ -1,0 +1,13 @@
+server:
+  port: 9090
+
+
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:mydb;NON_KEYWORDS=user
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
