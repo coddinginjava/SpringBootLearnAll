@@ -1,6 +1,7 @@
 package com.sai.SpringBootLearnAll.controller;
 
 import com.sai.SpringBootLearnAll.DTO.UserRequest;
+import com.sai.SpringBootLearnAll.advice.TimeTracker;
 import com.sai.SpringBootLearnAll.entity.User;
 import com.sai.SpringBootLearnAll.exceptions.UserNotFoundExceptions;
 import com.sai.SpringBootLearnAll.service.UserService;
@@ -25,7 +26,9 @@ public class UserController {
         return ResponseEntity.ok(userService.saveUser(userRequest));
     }
 
+
     @GetMapping("/fetchAll")
+    @TimeTracker
     public ResponseEntity<List<User>> getAllSavedUser(){
         return  ResponseEntity.ok(userService.findAllUsers());
     }
