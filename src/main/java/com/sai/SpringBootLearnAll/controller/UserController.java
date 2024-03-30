@@ -8,6 +8,7 @@ import com.sai.SpringBootLearnAll.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +36,9 @@ public class UserController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<User> findById(@PathVariable("id") Integer id) throws UserNotFoundExceptions {
-        return ResponseEntity.ok(userService.findById(id));
+    @Cacheable(value = "product", key = "#id")
+    @TimeTracker
+    public User findById(@PathVariable("id") Integer id) throws UserNotFoundExceptions {
+        return userService.findById(id);
     }
  }

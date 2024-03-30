@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "build")
 @Data
-public class UserRequest {
+public class UserRequest implements Serializable {
     private String name;
     private Integer age;
     private String mobileNumber;

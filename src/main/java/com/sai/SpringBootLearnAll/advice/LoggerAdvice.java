@@ -46,7 +46,7 @@ public class LoggerAdvice  {
     public Object trackTimeForTheSpecificMethodWithCustomInterface(ProceedingJoinPoint pjp) throws Throwable {
         long current = System.currentTimeMillis();
         Object proceeded = pjp.proceed();
-        log.info(pjp.getSignature().toString() + " has took  = " + (System.currentTimeMillis() - current) );
+        log.info(pjp.getSignature().toString() + "  took has = " + (System.currentTimeMillis() - current) );
         return  proceeded;
 
     }

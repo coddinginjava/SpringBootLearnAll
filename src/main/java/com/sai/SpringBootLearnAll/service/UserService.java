@@ -7,6 +7,7 @@ import com.sai.SpringBootLearnAll.entity.User;
 import com.sai.SpringBootLearnAll.exceptions.UserNotFoundExceptions;
 import com.sai.SpringBootLearnAll.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class UserService  {
 
     @Autowired
@@ -33,7 +35,11 @@ public class UserService  {
     }
 
     public User findById(Integer id) throws UserNotFoundExceptions {
+
         Optional<User> user = userRepository.findById(id);
+
+
+        log.info("Got user from the db");
         if (user.isPresent()) {
             return user.get();
         } else {
